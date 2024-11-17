@@ -117,7 +117,8 @@ const ReportTable = (props: ReportTableProps) => {
                                 </TableCell>
                                 {positions_value?.result.map(position => {
                                     const duration = fromSerializedTime(reportMap?.[controller.id]?.[position.id] ?? 0)
-                                    const [hours, min] = [duration.getUTCHours(), duration.getUTCMinutes()]
+                                    // const [hours, min] = [duration.getUTCHours(), duration.getUTCMinutes()]
+                                    const [hours, min] = [duration.hours, duration.minutes];
                                     const time_took = `${hours}:${MinDigits(2, min)}`
                                     const totalMin = (hours * 60) + min
                                     return (

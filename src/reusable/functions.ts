@@ -25,16 +25,18 @@ export const fromSerializedTime = (
 		Math.floor(TotalMinutes % 60),
 	];
 
-	const d = new Date();
-	if (toNormalTime) {
-		// d.setFullYear(2000, 0, 1);
-		d.setHours(hours, minutes, seconds);
-	} else {
-		// d.setUTCFullYear(2000, 0, 1);
-		d.setUTCHours(hours, minutes, seconds);
-	}
+	return {hours, minutes};
 
-	return d;
+	// const d = new Date();
+	// if (toNormalTime) {
+		// d.setFullYear(2000, 0, 1);
+		// d.setHours(hours, minutes, seconds);
+	// } else {
+		// d.setUTCFullYear(2000, 0, 1);
+		// d.setUTCHours(hours, minutes, seconds);
+	// }
+
+	// return d;
 };
 
 export const isEmpty = (...values: string[]) =>
