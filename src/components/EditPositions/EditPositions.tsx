@@ -22,8 +22,6 @@ const EditPositions = () => {
       return position; // Now this will only return valid positions
     });
 
-  console.log(positionMap);
-
   return (
     <Fragment>
       <PositionsDrawer positions={positions_value?.result} setSelected={setSelected} selected={selected} />

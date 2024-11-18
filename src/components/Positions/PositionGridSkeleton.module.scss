@@ -1,6 +1,7 @@
 .Container {
   height: 100%;
   margin-top: 0 !important;
+  position: relative;
   // display: Grid;
   // Grid-template-columns: repeat(6, 1fr);
   // gap: 15px;
@@ -19,13 +20,13 @@
     repeating-linear-gradient(to bottom,
       gray, gray 1px,
       /* gray line */
-      transparent 1px, transparent 10px
+      transparent 1px, transparent 50px
       /* Space */
     ),
     repeating-linear-gradient(to right,
       gray, gray 1px,
       /* Black line */
-      transparent 1px, transparent 10px
+      transparent 1px, transparent 50px
       /* Space */
     );
 }
