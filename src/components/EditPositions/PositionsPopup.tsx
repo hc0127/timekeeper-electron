@@ -69,7 +69,8 @@ const PositionsPopup = (props: PositionsPopupProps) => {
     );
     const UpdatedPosition = Object.assign(result, {
       id: position?.id ?? 0,
-      position: position?.position ?? null,
+      positionX: position?.positionX ?? null,
+      positionY: position?.positionY ?? null,
       relief_exempt: result.relief_exempt ? 1 : 0,
       created_date: (result.created_date as LocalDate).toSerialized(),
     }) as Positions;

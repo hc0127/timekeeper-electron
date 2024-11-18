@@ -76,7 +76,7 @@ const CombinePopup = (props: CombinePopupProps) => {
         positions={
           positions_value?.result.filter(
             (position) =>
-              position.position !== null && position.id !== props.position.id
+              position.positionX !== null && position.positionY !== null && position.id !== props.position.id
           ) ?? []
         }
         selected={null}

@@ -1,8 +1,56 @@
 .Container {
-    height: 100%;
-    margin-top: 0 !important;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 15px;
-    padding: 10px;
+  height: 100%;
+  margin-top: 0 !important;
+  // display: Grid;
+  // Grid-template-columns: repeat(6, 1fr);
+  // gap: 15px;
+  // padding: 10px;
+}
+
+.Grid {
+  position: relative;
+  width: 100%;
+  /* Adjust width as needed */
+  height: 100%;
+  /* Adjust height as needed */
+  background-color: white;
+  /* Background color */
+  background-image:
+    repeating-linear-gradient(to bottom,
+      gray, gray 1px,
+      /* gray line */
+      transparent 1px, transparent 10px
+      /* Space */
+    ),
+    repeating-linear-gradient(to right,
+      gray, gray 1px,
+      /* Black line */
+      transparent 1px, transparent 10px
+      /* Space */
+    );
+}
+
+.Grid::before,
+.Grid::after {
+  content: '';
+  position: absolute;
+  background: lightgray;
+}
+
+.Grid::before {
+  width: 100%;
+  /* Full width */
+  height: 1px;
+  /* Line thickness */
+  top: 0;
+  /* Position at the top */
+}
+
+.Grid::after {
+  width: 1px;
+  /* Line thickness */
+  height: 100%;
+  /* Full height */
+  left: 0;
+  /* Position at the left */
 }

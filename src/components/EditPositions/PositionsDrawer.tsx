@@ -19,7 +19,7 @@ const PositionsDrawer = (props: PositionDrawerProps) => {
             <Heading level="h3" label="Available Positions" /> 
             {props.positions && (
                 <PositionMiniBoxGrid
-                positions={props.positions.filter(position => position.position === null)}
+                positions={props.positions.filter(position => (position.positionX === null && position.positionY === null))}
                 selected={props.selected}
                 onSelect={position => props.setSelected(position)}
                 />

@@ -6,7 +6,8 @@ interface Positions {
     id: number
     name: string
     shorthand: string
-    position: number | null
+    positionX: number | null
+    positionY: number | null
     relief_exempt: number
     relief_time_min: number
     proficiency_time_min: number
@@ -34,11 +35,12 @@ class Positions {
         assert(position.id === 0)
         const db = await Open()
         db.run(
-            `INSERT INTO positions (name, shorthand, position, relief_exempt, relief_time_min, proficiency_time_min, created_date)
-            VALUES ($name, $shorthand, $position, $relief_exempt, $relief_time_min, $proficiency_time_min, $created_date)`, {
+            `INSERT INTO positions (name, shorthand, positionX,positionY, relief_exempt, relief_time_min, proficiency_time_min, created_date)
+            VALUES ($name, $shorthand, $positionX,$positionY, $relief_exempt, $relief_time_min, $proficiency_time_min, $created_date)`, {
                 $name: position.name,
                 $shorthand: position.shorthand,
-                $position: position.position,
+                $positionX: position.positionX,
+                $positionY: position.positionY,
                 $relief_exempt: position.relief_exempt,
                 $relief_time_min: position.relief_time_min,
                 $proficiency_time_min: position.proficiency_time_min,
@@ -52,6 +54,7 @@ class Positions {
     }
 
     static async Update(position: Positions) {
+        console.log('1');
         assert(position.id !== 0)
         
         const db = await Open()
@@ -59,7 +62,8 @@ class Positions {
             UPDATE positions SET
                 name = $name,
                 shorthand = $shorthand,
-                position = $position,
+                positionX = $positionX,
+                positionY = $positionY,
                 relief_exempt = $relief_exempt,
                 relief_time_min = $relief_time_min,
                 proficiency_time_min = $proficiency_time_min,
@@ -68,7 +72,8 @@ class Positions {
         `, {
             $name: position.name,
             $shorthand: position.shorthand,
-            $position: position.position,
+            $positionX: position.positionX,
+            $positionY: position.positionY,
             $relief_exempt: position.relief_exempt,
             $relief_time_min: position.relief_time_min,
             $proficiency_time_min: position.proficiency_time_min,
@@ -78,16 +83,18 @@ class Positions {
         Close(db, true)
     }
 
-    static async UpdateIndex(id: number, position: number | null) {
+    static async UpdateIndex(id: number, positionX: number | null,positionY: number | null) {
         assert(id !== 0)
 
         const db = await Open()
         db.run(`
             UPDATE positions SET
-                position = $position
+                positionX = $positionX,
+                positionY = $positionY
             WHERE id = $id
         `, {
-            $position: position,
+            $positionX: positionX,
+            $positionY: positionY,
             $id: id,
         })
         Close(db, true)

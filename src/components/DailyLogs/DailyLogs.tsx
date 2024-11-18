@@ -15,12 +15,13 @@ const DailyLogs = () => {
     const [date, setDate] = useState<LocalDate>(new LocalDate())
 
     const {value: positions_value} = useAsyncRefresh(() => DB.Positions.GetAll(), [counter])
-    const positionMap = Object.fromEntries(
-        positions_value?.result
-        .filter(position => date.gte(LocalDate.fromSerialized(position.created_date)) )
-        .map(position => [position.position, position]) ?? []
-    )
 
+    const positionMap = positions_value?.result
+    .filter(position => position?.positionX && position?.positionY && date.gte(LocalDate.fromSerialized(position.created_date))) // Filter out positions without positionX or positionY
+    .map((position, i) => {
+      return position; // Now this will only return valid positions
+    });
+    
     const {value: validations_value} = useAsyncRefresh(
         () => DB.LogValidation.GetAllValidations(date.toSerialized()),
         [counter, date]
@@ -49,8 +50,7 @@ const DailyLogs = () => {
             GetDayStatus={GetDayStatus}
             />
             <PositionGridSkeleton>
-                {new Array(18).fill(null).map((_, i) => {
-                    const position = positionMap[i] as Positions | undefined
+                {positionMap?.map((position, i) => {
                     const validation = validationMap[position?.id ?? 0] as LogValidation | undefined
                     return (
                         <ValidationPopup key={i} date={date} position={position} validated={!!validation} />

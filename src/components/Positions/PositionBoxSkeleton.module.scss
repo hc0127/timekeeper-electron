@@ -1,5 +1,8 @@
 .Box {
-    position: relative;
+    position:absolute;
+    width: 250px;
+    height: 300px;
+    // position: relative;
     display: flex;
     flex-direction: column;
     min-height: 160px;

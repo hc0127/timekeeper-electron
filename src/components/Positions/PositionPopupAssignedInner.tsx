@@ -62,7 +62,7 @@ const PositionPopupAssignedInner = ({
 
 	// Position Map
 	const positionMap = Object.fromEntries(
-		positions_value?.result.map((position) => [position.position, position]) ??
+		positions_value?.result.map((position) => [position.positionX,position.positionY, position]) ??
 			[]
 	);
 
@@ -94,10 +94,10 @@ const PositionPopupAssignedInner = ({
 						date.toSerialized()
 					)
 				).result;
-				if (t_position_id === position.position) {
-					ElectronAlert("You are already on that posiiton!");
-					return;
-				}
+				// if (t_position_id === position.position) {
+				// 	ElectronAlert("You are already on that posiiton!");
+				// 	return;
+				// }
 				if (await ElectronConfirm("Do you want to exchange this position?")) {
 					// console.log("t_position_id ", t_position_id)
 					setNewPosition(positionMap[t_position_id]);

@@ -107,6 +107,7 @@ const ValidationPopup = (props: ValidationPopupProps) => {
             <PositionBoxSkeleton
             shorthand={position?.shorthand ?? ""}
             hidden={!position?.shorthand}
+            style={{ top: `${position?.positionY}px`, left: `${position?.positionX}px` }}
             >
                 <ValidationStatus checked={props.validated} />
             </PositionBoxSkeleton>
