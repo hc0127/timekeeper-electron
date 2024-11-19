@@ -131,6 +131,7 @@ const PositionBox = ({ position, status, ...props }: PositionBoxProps) => {
       trigger={
         <PositionBoxSkeleton
           shorthand={position?.shorthand ?? ""}
+					className={clsx(styles[color])}
           style={{ top: `${position?.positionY}px`, left: `${position?.positionX}px` }}
           hovered={props.hovered}
           onHover={props.onHover}
