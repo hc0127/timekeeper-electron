@@ -26,8 +26,8 @@ const PositionGridSkeleton = ({ children, className, selected }: PositionGridSke
 
       let positionX = (event.clientX - rect.left); // Get the x-coordinate
       let positionY = (event.clientY - rect.top); // Get the y-coordinate
-      positionX = positionX - positionX % 50 + 1;
-      positionY = positionY - positionY % 50 + 1;
+      positionX = positionX - positionX % 20 + 1;
+      positionY = positionY - positionY % 20 + 1;
 
       try {
         await DB.Positions.Update({ ...selected, positionX, positionY });
