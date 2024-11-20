@@ -321,24 +321,25 @@ class LogTimes {
 		const db = await Open();
 
 		const result = db.exec(
-			`
-            SELECT
-                position_status.*,
+			`SELECT position_s.*,
                 controllers.initials AS controller_initials,
                 trainee.initials AS trainee_initials
-            FROM (
-                SELECT * from log_times
-                WHERE log_date = $log_date
-                ${
-									typeof until_time === "undefined"
-										? ""
-										: `AND start_time <= ${until_time}`
-								}
+			FROM(
+				SELECT
+					position_status.*
+				FROM (
+					SELECT * from log_times
+					WHERE log_date = $log_date
+					${
+						typeof until_time === "undefined"
+							? ""
+							: `AND start_time <= ${until_time}`
+					}
                 ORDER BY position_id ASC, start_time DESC
-            ) AS position_status
-            LEFT JOIN controllers ON controllers.id = position_status.controller_id
-            LEFT JOIN controllers AS trainee ON trainee.id = position_status.trainee_controller_id
-            GROUP BY position_id
+            	) AS position_status GROUP BY position_id
+			) AS position_s
+            LEFT JOIN controllers ON controllers.id = position_s.controller_id
+            LEFT JOIN controllers AS trainee ON trainee.id = position_s.trainee_controller_id
             `,
 			{
 				$log_date: log_date,
