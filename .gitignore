@@ -6,7 +6,7 @@
 .pnp.js
 .DS_Store
 
-package-lock.json
+#package-lock.json
 
 # testing
 /coverage
