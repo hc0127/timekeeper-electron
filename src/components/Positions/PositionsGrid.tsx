@@ -47,7 +47,7 @@ const PositionBox = ({ position, status, ...props }: PositionBoxProps) => {
           let tmpObj: any = positionsStatusValues[i];
           if (prevousId != tmpObj.controller_id) {
             prevousId = tmpObj.controller_id;
-            return time;
+            // return time;
           }
           time = tmpObj.start_minute;
         }
