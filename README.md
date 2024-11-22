@@ -2,8 +2,22 @@
 
 ## To Setup
 
-1. Create `electron/settings.ts` following `electron/settings.example.ts`
-2. Run `npm run electron:dev` for development
-3. Run `npm run electron:build` to build a production version
+Create ```electron/settings.ts``` following ```electron/settings.example.ts```
 
-Updated at 2022-05-19
+Run development mode
+```sh
+   npm run electron:dev
+```
+
+Build production version
+```sh
+   npm run electron:build
+```
+
+Build windows application version
+```sh
+   npm run electron:build
+```
+
+* If you have some problems to run the project, go to 
+[issue](https://github.com/hc0127/timekeeper-electron/issues/new)
